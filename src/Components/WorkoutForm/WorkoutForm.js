@@ -1,7 +1,7 @@
 import React from 'react';
 import './WorkoutForm.css';
 
-export default function WorkoutForm() {
+export default function WorkoutForm(props) {
     const [errorMessage, setErrorMessage] = React.useState('');
     const activityInput = React.useRef();
     const quantityInput = React.useRef();
@@ -14,7 +14,10 @@ export default function WorkoutForm() {
 
         if (activityValue.length > 0 && quantityValue.length > 0) {
             setErrorMessage('');
-            console.log(activityValue, quantityValue);
+            props.addItem({
+                exercise: activityValue, 
+                quantity: quantityValue
+            });
 
             activityInput.current.value = '';
             quantityInput.current.value = '';
