@@ -1,19 +1,27 @@
 import React from 'react';
+import './WorkoutForm.css';
 
 export default function WorkoutForm() {
+    const [errorMessage, setErrorMessage] = React.useState('');
     const activityInput = React.useRef();
     const quantityInput = React.useRef();
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        const activityValue = activityInput.current.value;
-        const quantityValue = quantityInput.current.value;
+        const activityValue = activityInput.current.value.trim();
+        const quantityValue = quantityInput.current.value.trim();
 
-        console.log(activityValue, quantityValue);
+        if (activityValue.length > 0 && quantityValue.length > 0) {
+            setErrorMessage('');
+            console.log(activityValue, quantityValue);
 
-        activityInput.current.value = '';
-        quantityInput.current.value = '';
+            activityInput.current.value = '';
+            quantityInput.current.value = '';
+        } else {
+            setErrorMessage('Provide both activity and quantity values.');
+        }
+
     }
 
     return (
@@ -37,6 +45,7 @@ export default function WorkoutForm() {
                 </label>
             </div>
             <button type="submit">Add</button>
+            <p className="error-message">{ errorMessage }</p>
         </form>
     );
 }
