@@ -11,6 +11,9 @@ export default function WorkoutForm() {
         const quantityValue = quantityInput.current.value;
 
         console.log(activityValue, quantityValue);
+
+        activityInput.current.value = '';
+        quantityInput.current.value = '';
     }
 
     return (
