@@ -38,6 +38,17 @@ export default function App() {
     });
   }
 
+  const deleteItem = (itemId) => {
+    setWorkoutItems(oldWorkoutItems => {
+      const { workoutList, nextId } = oldWorkoutItems;
+      const newWorkoutList = workoutList.filter(item => item.id !== itemId);
+      return {
+        workoutList: newWorkoutList, 
+        nextId
+      }
+    });
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -45,7 +56,9 @@ export default function App() {
       </header>
       <main>
         <WorkoutForm addItem={addItem} />
-        <WorkoutList workoutItems={workoutItems.workoutList} />
+        <WorkoutList 
+          workoutItems={workoutItems.workoutList} 
+          deleteItem={deleteItem} />
       </main>
     </div>
   );
