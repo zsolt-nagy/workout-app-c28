@@ -3,6 +3,7 @@ import './App.css';
 import React from 'react';
 import WorkoutList from './Components/WorkoutList/WorkoutList';
 import WorkoutForm from './Components/WorkoutForm/WorkoutForm';
+import { Button } from 'react-bootstrap';
 
 export default function App() {
 
@@ -120,9 +121,12 @@ export default function App() {
           deleteItem={deleteItem}
           toggleItem={toggleItem}
           moveItem={moveItem} />
-        <button onClick={deleteAllCompletedItems}>
+        <Button 
+          onClick={deleteAllCompletedItems} 
+          variant="danger"
+          className="my-2">
           Delete Completed Todos
-        </button>
+        </Button>
       </main>
     </div>
   );

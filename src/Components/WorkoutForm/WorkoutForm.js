@@ -1,4 +1,6 @@
 import React from 'react';
+import { Button, Form } from 'react-bootstrap';
+
 import './WorkoutForm.css';
 
 export default function WorkoutForm(props) {
@@ -28,27 +30,31 @@ export default function WorkoutForm(props) {
     }
 
     return (
-        <form action="#" method="GET" onSubmit={handleSubmit}>
-            <div>
-                <label>
-                    Activity:
-                    <input 
-                        type="text" 
-                        name="activity"
-                        ref={activityInput} />    
-                </label> 
-            </div>
-            <div>
-                <label>
-                    Quantity:
-                    <input 
-                        type="text" 
-                        name="quantity"
-                        ref={quantityInput} /> 
-                </label>
-            </div>
-            <button type="submit">Add</button>
+        <Form action="#" method="GET" onSubmit={handleSubmit}>
+            <Form.Group 
+                className="mb-3 col-12 col-sm-6 col-md-4 col-xl-3" 
+                controlId="formActivity">
+                <Form.Label>Activity</Form.Label>
+                <Form.Control 
+                    type="text" 
+                    name="activity"
+                    placeholder="Activity" 
+                    ref={activityInput}
+                    required />
+            </Form.Group>
+            <Form.Group 
+                className="mb-3 col-12 col-sm-6 col-md-4 col-xl-3" 
+                controlId="formQuantity">
+                <Form.Label>Quantity</Form.Label>
+                <Form.Control 
+                    type="text" 
+                    name="quantity"
+                    placeholder="Quantity" 
+                    ref={quantityInput}
+                    required />
+            </Form.Group>            
+            <Button type="submit" variant="warning">Add</Button>
             <p className="error-message">{ errorMessage }</p>
-        </form>
+        </Form>
     );
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import './WorkoutList.css';
 
+import { Button, Table } from 'react-bootstrap';
+
 export default function WorkoutList(props) {
     const workoutItems = props.workoutItems;
 
@@ -25,23 +27,35 @@ export default function WorkoutList(props) {
                 {item.quantity}
             </td>
             <td>
-                <button onClick={() => deleteButtonClicked(item.id)}>
-                    Delete
-                </button>
-                <button onClick={() => toggleButtonClicked(item.id)}>
+                <Button 
+                    onClick={() => toggleButtonClicked(item.id)}
+                    variant="success"
+                    className="m-1">
                     {item.isCompleted ? "Clear" : "Complete"} Todo
-                </button>
-                <button onClick={() => moveButtonClicked(item.id, true)}>
+                </Button>
+                <Button 
+                    onClick={() => moveButtonClicked(item.id, true)}
+                    variant="primary"
+                    className="m-1">
                     Up
-                </button>
-                <button onClick={() => moveButtonClicked(item.id, false)}>
+                </Button>
+                <Button 
+                    onClick={() => moveButtonClicked(item.id, false)}
+                    variant="primary"
+                    className="m-1">
                     Down
-                </button>
+                </Button>
+                <Button 
+                    onClick={() => deleteButtonClicked(item.id)}
+                    variant="danger"
+                    className="m-1">
+                    Delete
+                </Button>                
             </td>
         </tr>
     ));
     return (
-        <table>
+        <Table striped bordered hover variant="dark">
             <thead>
                 <tr>
                     <th>Exercise</th>
@@ -52,6 +66,6 @@ export default function WorkoutList(props) {
             <tbody>
                 {tableRows}               
             </tbody>
-        </table>
+        </Table>
     );
 }

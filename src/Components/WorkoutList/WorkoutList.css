@@ -1,4 +1,9 @@
-.completed {
+.table-striped>tbody>tr>.completed {
     color: lightseagreen;
     text-decoration: line-through;
+}
+
+td, th {
+    padding: 10px;
+    vertical-align: middle;
 }
