@@ -70,6 +70,33 @@ export default function App() {
     });
   }
 
+  const moveItem = (itemId, isUpwards) => {
+    setWorkoutItems(oldWorkoutItems => {
+      const { workoutList, nextId } = oldWorkoutItems;
+      const newWorkoutList = [...workoutList]; // shallow cloning is mandatory
+      for (let i = 0; i < newWorkoutList.length; i++) { 
+        if (newWorkoutList[i].id === itemId) {
+          // escape from the loop if we know that the item is not to be moved.
+          if (i === 0 && isUpwards) break;
+          if (i === newWorkoutList.length - 1 && !isUpwards) break;
+
+          let currentItem = newWorkoutList[i];
+          let otherItemIndex = isUpwards ? i - 1 : i + 1;
+          let otherItem = newWorkoutList[otherItemIndex];
+
+          newWorkoutList[otherItemIndex] = currentItem;
+          newWorkoutList[i] = otherItem;
+
+          break; // mandatory to avoid continuing swapping downwards.
+        } 
+      }
+      return {
+        workoutList: newWorkoutList, 
+        nextId
+      }
+    });    
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -80,7 +107,8 @@ export default function App() {
         <WorkoutList 
           workoutItems={workoutItems.workoutList} 
           deleteItem={deleteItem}
-          toggleItem={toggleItem} />
+          toggleItem={toggleItem}
+          moveItem={moveItem} />
       </main>
     </div>
   );

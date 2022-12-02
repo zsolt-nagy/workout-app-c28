@@ -4,12 +4,16 @@ import './WorkoutList.css';
 export default function WorkoutList(props) {
     const workoutItems = props.workoutItems;
 
-    const deleteButtonClicked = (event) => {
-        props.deleteItem(Number(event.target.dataset.id));
+    const deleteButtonClicked = (itemId) => {
+        props.deleteItem(itemId);
     }
 
-    const toggleButtonClicked = (event) => {
-        props.toggleItem(Number(event.target.dataset.id));
+    const toggleButtonClicked = (itemId) => {
+        props.toggleItem(itemId);
+    }
+
+    const moveButtonClicked = (itemId, isUpwards) => {
+        props.moveItem(itemId, isUpwards);
     }
 
     const tableRows = workoutItems.map(item => (
@@ -21,11 +25,17 @@ export default function WorkoutList(props) {
                 {item.quantity}
             </td>
             <td>
-                <button onClick={deleteButtonClicked} data-id={item.id}>
+                <button onClick={() => deleteButtonClicked(item.id)}>
                     Delete
                 </button>
-                <button onClick={toggleButtonClicked} data-id={item.id}>
+                <button onClick={() => toggleButtonClicked(item.id)}>
                     {item.isCompleted ? "Clear" : "Complete"} Todo
+                </button>
+                <button onClick={() => moveButtonClicked(item.id, true)}>
+                    Up
+                </button>
+                <button onClick={() => moveButtonClicked(item.id, false)}>
+                    Down
                 </button>
             </td>
         </tr>
