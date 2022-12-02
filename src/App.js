@@ -97,6 +97,17 @@ export default function App() {
     });    
   }
 
+  const deleteAllCompletedItems = () => {
+    setWorkoutItems(oldWorkoutItems => {
+      const { workoutList, nextId } = oldWorkoutItems;
+      const newWorkoutList = workoutList.filter(item => !item.isCompleted);
+      return {
+        workoutList: newWorkoutList, 
+        nextId
+      }
+    });
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -109,6 +120,9 @@ export default function App() {
           deleteItem={deleteItem}
           toggleItem={toggleItem}
           moveItem={moveItem} />
+        <button onClick={deleteAllCompletedItems}>
+          Delete Completed Todos
+        </button>
       </main>
     </div>
   );
