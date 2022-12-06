@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/workout-app-c28/static/css/main.113170b1.css",
+    "main.js": "/workout-app-c28/static/js/main.161d29ec.js",
+    "index.html": "/workout-app-c28/index.html",
+    "main.113170b1.css.map": "/workout-app-c28/static/css/main.113170b1.css.map",
+    "main.161d29ec.js.map": "/workout-app-c28/static/js/main.161d29ec.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.113170b1.css",
+    "static/js/main.161d29ec.js"
+  ]
+}
