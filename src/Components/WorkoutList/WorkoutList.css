@@ -1,4 +1,5 @@
-.table-striped>tbody>tr>.completed {
+.table-striped>tbody>tr>.completed, /* keep this specificity to override Bootstrap*/
+.completed {
     color: lightseagreen;
     text-decoration: line-through;
 }
@@ -6,4 +7,47 @@
 td, th {
     padding: 10px;
     vertical-align: middle;
+}
+
+.workout-list-item {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.workout-list-item:hover {
+    background-color: rgb(55, 55, 55);
+}
+
+.exercise-span {
+    display: inline-block;
+    width: 50%;
+    min-width: 175px;
+    text-overflow: ellipsis;
+} 
+
+.button-toolbar {
+    background-color: rgb(40,44,52);
+}
+
+.button-toolbar:hover {
+    background-color: rgb(55, 55, 55);
+}
+
+.table-layout {
+    display: table;
+}
+
+.ul-layout {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .table-layout {
+        display: none;
+    }
+    
+    .ul-layout {
+        display: block;
+    }    
 }

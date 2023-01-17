@@ -7,5 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #282c34;
   color: white;
+
+  min-width: 550px;  /* TODO: create a layout for 400px+ */
 }
 
